@@ -5,7 +5,7 @@
         <div class="col-12">
             <h5 class="mb-4">Nama Galeri,<?= $data['nama'] ?></h5>
 
-            <form action="/gallery/<?= $data['id'] ?>/update" method="post">
+            <form action="/gallery/<?= $data['id'] ?>/update" method="post"  enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="put" />
 
                 <div class="form-group">
@@ -27,11 +27,20 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="deskripsi">Deskripsi</label>
-                    <input type="text" class="form-control" id="deskripsi" aria-describedby="emailHelp" 
-                    placeholder="Masukkan Deskripsi Galeri"  name="deskripsi" value="<?= $data['deskripsi'] ?>">
+                    <label for="seniman">Foto</label><br>
+                    <img src="/photos/<?= $data['photo'] ?>" alt="" width=100 height=100>
                 </div>
 
+                <div class="form-group">
+                        <label for="nama">Ubah Foto</label>
+                        <input type="file" class="form-control" id="example-product-photo" aria-describedby="photoHelp" name="photo">
+                    </div>
+
+                <div class="form-group">
+                    <label for="nama">Deskripsi</label>
+                    <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30" rows="5" placeholder="Masukkan Deskripsi"><?= $data['deskripsi'] ?></textarea>
+                </div>
+                <a href="/gallery" class="btn btn-danger">Cancel</a>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

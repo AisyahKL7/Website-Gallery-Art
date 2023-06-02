@@ -4,12 +4,16 @@
     <div class="row mb-4">
         <div class="col-12">
         <h5 class="mb-4">Halo, <?= session('nama') ?> </h5>
-            <h1 class="mb-4">Daftar Galeri</h1>
-            <a href="/gallery/new">Tambahkan galeri baru</a>
-                        </br>
-                        </br>
-
-            <table class="table table-hover ">
+            <div class="row justify-content-between mb-3">
+                <div class="col-md-9">
+                <h2>Daftar Galeri Indonesia</h2>
+                </div>
+                <div class="col-md-3">
+                <a class="btn btn-primary shadow btn-block" href="/gallery/new"><i class="fas fa-plus"></i> Tambahkan galeri baru</a>
+                </div>
+                
+            </div>
+            <table class="table table-hover " id="list-gallery">
                 <thead>
                     <tr>
                         <th scope="col ">ID</th>
@@ -34,11 +38,16 @@
                         <td>
                             <div class="btn-group " role="group " aria-label="Basic example ">
                                 <form action="/gallery/<?= $item['id'] ?>" method="POST" onsubmit="return confirm(`Apakah Anda yakin?`)">
-                                    <a href="/gallery/<?= $item['id'] ?>/edit" class="btn btn-info text-white "><i class='bx bx-pencil'></i></a>
-                                    <input type="hidden" name="_method" value="DELETE" />
-                                    <button class="btn btn-danger text-white" type="submit">
-                                        <i class='bx bx-trash'></i>
+                                <div class="form-input-group">
+                                <input type="hidden" name="_method" value="DELETE" />
+                                <div class="input-group-append">
+                                <a ttile="Edit Gallery" href="/gallery/<?= $item['id'] ?>/edit" class="btn btn-info text-white "><i class='fas fa-pencil'></i></a>
+                                    
+                                    <button  ttile="Delete Gallery" class="btn btn-danger text-white" type="submit">
+                                        <i class='fas fa-trash'></i>
                                     </button>
+                                </div>
+                                    </div>
                                 </form>
                             </div>
                         </td>
@@ -46,9 +55,6 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
-        </div>
-        <div class="col-12">
-            <?= $pager->links('gallery2', 'custom_pagination') ?>
         </div>
     </div>
 </div>

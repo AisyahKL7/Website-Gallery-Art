@@ -7,9 +7,11 @@ use App\Models\GalleryModel;
 
 class Dashboard extends ResourceController
 {
+    protected $session;
 
     public function __construct() {
         $this->galleryModel = new GalleryModel();
+        $this->session = \Config\Services::session();
        
     }
 
@@ -21,6 +23,10 @@ class Dashboard extends ResourceController
     public function index($id = null)
     {
         $gallery2 = $this->galleryModel->find($id);
+
+        // echo "<pre>";
+        // print_r($this->session->get());
+        // die;    
         
         $data = [
             "gallery2" => $gallery2

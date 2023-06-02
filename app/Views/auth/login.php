@@ -17,7 +17,7 @@
                 </div>
             <?php } ?>
 
-            <form action="/login" method="post">
+            <form action="<?= base_url(); ?>/login/process" method="post">
 
                 <div class="form-group">
                     <label for="example-email">Email</label>

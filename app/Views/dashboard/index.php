@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 
 <div class="row m-2">
-    <h1 class="mb-1">Daftar Galeri</h1>
+    <h1 class="mb-1">Daftar Galeri Indonesia</h1>
 </div>
 <div class="container">
     <?php
@@ -11,7 +11,7 @@
     ?>
     <div class="row mb-4">
         <div class="col-12">
-        <div class="card" style="width: 15rem;">
+        <div class="card" style="width=100 height=100">
             <img class="card-img-top" src="<?=base_url('photos/')?><?= $row['photo']; ?>" alt="Card image cap">
             <div class="card-body">
                     <h5 class="card-title text-center"><?= $row['nama'] ?></h5>

@@ -22,7 +22,7 @@ class Login extends ResourceController
     public function index()
     {
         
-        echo view('auth/login');
+        return view('auth/login');
     }
 
     /**
@@ -118,5 +118,11 @@ class Login extends ResourceController
     public function delete($id = null)
     {
         //
+    }
+
+    function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/login');
     }
 }

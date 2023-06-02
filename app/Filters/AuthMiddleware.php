@@ -30,7 +30,7 @@ class AuthMiddleware implements FilterInterface
       
       if (!isset($loggedIn)) {
           $session->setFlashData("errors", "Anda harus login terlebih dahulu!");
-          return redirect()->to('/login');
+          return redirect('login');
       }
   }
 

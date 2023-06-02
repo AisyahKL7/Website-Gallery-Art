@@ -53,6 +53,8 @@ class Register extends ResourceController
             "nama" => $this->request->getPost('nama'),
             "email" => $this->request->getPost('email'),
             "password" => md5($this->request->getPost('password')),
+
+            
         ];
 
         $this->adminModel->insert($payload);

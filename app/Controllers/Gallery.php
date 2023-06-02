@@ -20,7 +20,8 @@ class Gallery extends ResourceController
      */
     public function index() 
     {
-        $gallery2 = $this->galleryModel->paginate(5, 'gallery2');
+        $gallery2 = $this->galleryModel->paginate(10, 'gallery2');
+        
 
 
         $payload = [
@@ -89,8 +90,6 @@ class Gallery extends ResourceController
     {
         $gallery = $this->galleryModel->find($id);
 
-        
-        
         echo view('gallery/edit', ["data" => $gallery]);
     }
 
@@ -101,14 +100,27 @@ class Gallery extends ResourceController
      */
     public function update($id = null)
     {
+
         $payload = [
-                "nama" => $this->request->getPost('nama'),
-                "tahun" => (int)$this->request->getPost('tahun'),
-                "seniman" => $this->request->getPost('seniman'),
-                "deskripsi" => $this->request->getPost('deskripsi'),
-                
-            ];
-       
+            "nama" => $this->request->getPost('nama'),
+            "tahun" => (int)$this->request->getPost('tahun'),
+            "seniman" => $this->request->getPost('seniman'),
+            "deskripsi" => $this->request->getPost('deskripsi'),
+        ];
+        $photos = $this->request->getFile('photo');
+
+        if($photos != ''){
+            $fileName = "";
+
+            $photo = $this->request->getFile('photo');
+
+            if ($photo) {
+                $fileName = $photo->getRandomName(); // Mendapatkan nama file baru secara acak
+
+                $photo->move('photos', $fileName); // Memindahkan file ke public/photos dengan nama acak
+            }
+            $payload['photo'] = $fileName;
+        }
         $this->galleryModel->update($id, $payload);
         return redirect()->to('/gallery');
     }
